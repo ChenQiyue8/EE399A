@@ -26,7 +26,7 @@ In our case, the loss function is defined as:
 
 .. math::
 
-   E = \\sqrt{\frac{1}{n} \\sum_{j=1}^n (f(x_j)-y_j)^2}
+   E = \\sqrt{\\frac{1}{n} \\sum_{j=1}^n (f(x_j)-y_j)^2}
 
 
 
