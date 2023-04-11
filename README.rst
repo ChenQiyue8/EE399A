@@ -26,6 +26,7 @@ In our case, the loss function is defined as:
 
 E = :math:`\sqrt{\frac{1}{n} \sum_{j=1}^n (f(x_j) - y_j)^2}`
 
+
 The loss function can be visualized as a loss landscape, where each point represents a set of parameter values and the loss value associated with those parameters. In addition, linear regression is a technique used to fit a linear equation to data. Polynomial regression is a generalization of linear regression that allows for fitting higher-order polynomials to data.
 
 Algorithm Implementation and Development
