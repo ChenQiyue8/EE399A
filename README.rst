@@ -24,7 +24,13 @@ Theoretical Background
 Non-linear regression is a statistical technique used to fit non-linear functions to data. The least-squares method is commonly used to determine the best-fit parameters of a non-linear function. The method involves minimizing the sum of squared differences between the predicted values and the actual values. 
 In our case, the loss function is defined as:
 
-$$E = \sqrt{\frac{1}{n} \sum_{j=1}^n (f(x_j) - y_j)^2}$$
+$$
+\begin{align}
+E &= \sqrt{\frac{1}{n} \sum_{j=1}^n (f(x_j) - y_j)^2} \\
+  &= \frac{1}{n} \sum_{j=1}^n |f(x_j) - y_j|
+\end{align}
+$$
+
 
 
 The loss function can be visualized as a loss landscape, where each point represents a set of parameter values and the loss value associated with those parameters. In addition, linear regression is a technique used to fit a linear equation to data. Polynomial regression is a generalization of linear regression that allows for fitting higher-order polynomials to data.
