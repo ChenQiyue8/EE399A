@@ -24,7 +24,7 @@ Theoretical Background
 Non-linear regression is a statistical technique used to fit non-linear functions to data. The least-squares method is commonly used to determine the best-fit parameters of a non-linear function. The method involves minimizing the sum of squared differences between the predicted values and the actual values. 
 In our case, the loss function is defined as:
 
-$$ E = :math:`\sqrt{\frac{1}{n} \sum_{j=1}^n (f(x_j) - y_j)^2}'$$
+$$ E = \sqrt{\frac{1}{n} \sum{j=1}^n (f(x_j) - y_j)^2}$$
 
 
 
