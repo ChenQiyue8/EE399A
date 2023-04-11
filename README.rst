@@ -1,6 +1,8 @@
 EE399A
 =========
 
+.. contents:: Table of contents
+
 This is my project demostration for EE399A Spring 2023. 
 ---------
 
