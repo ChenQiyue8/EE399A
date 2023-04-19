@@ -197,19 +197,19 @@ for i in range(6):
 ### Problem (a): Computing and plotting the correlation matrix between the first 100 faces
 
 <p>
-  <img src='https://github.com/ara-vardanyan/EE-399-Machine-Learning-HW-Reports/blob/a765c023cce8d71a7b5561b259970bd9a6b45e92/homework2/figures/ProblemACorrelationMatrix.png'>
+  <img src='https://github.com/qchen4/EE399A/blob/be54602053b45137fd7dff613586485f1c894d51/HW2/Figures/ProblemACorrelationMatrix.png'>
 </p>
 
 ### Problem (b): Plotting most and least correlated faces
 
 <p>
-  <img src='https://github.com/ara-vardanyan/EE-399-Machine-Learning-HW-Reports/blob/a765c023cce8d71a7b5561b259970bd9a6b45e92/homework2/figures/ProblemBMostAndLeastCorrelatedFaces.png'>
+  <img src='https://github.com/qchen4/EE399A/blob/be54602053b45137fd7dff613586485f1c894d51/HW2/Figures/FaceCorrelation.png'>
 </p>
 
 ### Problem (c): Computing and plotting the correlation matrix for specified images
 
 <p>
-  <img src='https://github.com/ara-vardanyan/EE-399-Machine-Learning-HW-Reports/blob/a765c023cce8d71a7b5561b259970bd9a6b45e92/homework2/figures/ProblemCCorrelationMatrixSpecifiedImages.png'>
+  <img src='https://github.com/qchen4/EE399A/blob/be54602053b45137fd7dff613586485f1c894d51/HW2/Figures/ProblemCCorrelationMatrixSpecifiedImages.png'>
 </p>
 
 ### Problem (f): Computing the norm of the difference of absolute values of the first eigenvector `v_1` and the first SVD mode `u_1`
@@ -220,7 +220,7 @@ for i in range(6):
 ### Problem (g): Compute the percentage of variance captured by each of the first 6 SVD modes and plotting the first 6 SVD modes
 
 <p>
-  <img src='https://github.com/ara-vardanyan/EE-399-Machine-Learning-HW-Reports/blob/a765c023cce8d71a7b5561b259970bd9a6b45e92/homework2/figures/ProblemGFirst6SVDModes.png'>
+  <img src='https://github.com/qchen4/EE399A/blob/be54602053b45137fd7dff613586485f1c894d51/HW2/Figures/SVDmodes.png'>
 </p>
 
 | SVD mode | Percentage of variance captured |
