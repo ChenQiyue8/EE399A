@@ -7,5 +7,5 @@ Professor: Dr. Nathan Kutz
 
 
 ## Table of Contents
-- [Homework 1](./HW1/README.md)
+- [Homework 1](./HW1/README.rst)
 - [Homework 2](./HW2/README.md)
