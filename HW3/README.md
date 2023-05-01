@@ -12,7 +12,8 @@ The project provides hands-on experience with a popular dataset and various mach
 
 This project analyzes the MNIST dataset, which consists of 70,000 grayscale images of handwritten digits, using various machine learning techniques. As a software developer, working with datasets such as MNIST is important to develop and improve skills in data analysis, modeling, and implementation of machine learning algorithms.
 
-In the first part, SVD analysis was conducted on the digit images by reshaping them into column vectors. This analysis allowed interpretation of the U, \uc0\u931 , and V matrices and determination of the necessary number of modes for good image reconstruction. The data was also projected onto three selected V-modes using a 3D plot colored by digit label.
+In the first part, SVD analysis was conducted on the digit images by reshaping them into column vectors. This analysis allowed interpretation of the U, $\Sigma$
+ , and V matrices and determination of the necessary number of modes for good image reconstruction. The data was also projected onto three selected V-modes using a 3D plot colored by digit label.
 
 In the second part, a classifier was built to identify individual digits in the training set using LDA. Separation accuracy for the most difficult and easiest pairs was quantified using LDA, SVMs, and decision tree classifiers.
 
