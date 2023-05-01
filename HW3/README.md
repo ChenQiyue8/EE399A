@@ -1,12 +1,12 @@
- # Homework 3: Singular Value Decomposition (SVD), Support Vector Machine (SVM) and Decision Trees  - Qiyue Chen\
+ # Homework 3: Singular Value Decomposition (SVD), Support Vector Machine (SVM) and Decision Trees  - Qiyue Chen
 
 ## Abstract:
 
 This project analyzes the MNIST dataset using various machine learning techniques. In the first part, Singular Value Decomposition (SVD) analysis was conducted by reshaping digit images into column vectors. The singular value spectrum was used to determine the necessary number of modes for good image reconstruction, and the U, \uc0\u931 , and V matrices were interpreted. Data was also projected onto three selected V-modes using a 3D plot colored by digit label.
 
-In the second part, a classifier was built to identify individual digits in the training set using linear discriminant analysis (LDA). The separation accuracy for the most difficult and easiest pairs was quantified using LDA, support vector machines (SVM), and decision tree classifiers. \
+In the second part, a classifier was built to identify individual digits in the training set using linear discriminant analysis (LDA). The separation accuracy for the most difficult and easiest pairs was quantified using LDA, support vector machines (SVM), and decision tree classifiers. 
 
-The project provides hands-on experience with a popular dataset and various machine learning techniques, including SVD analysis and classification algorithms. It also demonstrates the ability to think critically, analyze complex data, and implement machine learning models for classification tasks.\
+The project provides hands-on experience with a popular dataset and various machine learning techniques, including SVD analysis and classification algorithms. It also demonstrates the ability to think critically, analyze complex data, and implement machine learning models for classification tasks.
 
 ## Introduction and Overview:
 
@@ -30,21 +30,21 @@ Understanding the theoretical background behind the MNIST dataset and techniques
 
 ## Algorithm Implementation and Development 
 
-The MNIST dataset was loaded using the ```fetch_openml('mnist_784')``` function from the **sklearn** library. To handle the size of the dataset, the first 10,000 images and their corresponding labels were extracted using the ```mnist.data[:10000]``` and ```mnist.target[:10000]``` attributes, respectively. The images array was then normalized by dividing by 255.0 to range from 0 to 1.\
+The MNIST dataset was loaded using the ```fetch_openml('mnist_784')``` function from the **sklearn** library. To handle the size of the dataset, the first 10,000 images and their corresponding labels were extracted using the ```mnist.data[:10000]``` and ```mnist.target[:10000]``` attributes, respectively. The images array was then normalized by dividing by 255.0 to range from 0 to 1.
 
 ### Part (b):
 
-To visualize the data in a new way, I selected three V-modes (columns from the V matrix) and projected the data onto them using the dot product of the data matrix and the selected V-modes. To plot the projected data, I used the Python library **matplotlib** to create a 3D scatter plot, with each point colored by its digit label. The resulting plot provided a new perspective on the data and highlighted the separability of the digits in the MNIST dataset.\
+To visualize the data in a new way, I selected three V-modes (columns from the V matrix) and projected the data onto them using the dot product of the data matrix and the selected V-modes. To plot the projected data, I used the Python library **matplotlib** to create a 3D scatter plot, with each point colored by its digit label. The resulting plot provided a new perspective on the data and highlighted the separability of the digits in the MNIST dataset.
 
 ### Classification Algorithms
 
-To build a classifier for identifying individual digits in the training set, I implemented three classification algorithms: linear discriminant analysis (LDA), support vector machines (SVM), and decision tree classifiers. \
+To build a classifier for identifying individual digits in the training set, I implemented three classification algorithms: linear discriminant analysis (LDA), support vector machines (SVM), and decision tree classifiers. 
 
 #### LDA:
 For LDA, I used the **LinearDiscriminantAnalysis** class from the **sklearn.discriminant_analysis** module. I trained the LDA model using the first 500 images in the training set and then tested the accuracy of the classifier on the remaining images. I repeated this process for two-digit and three-digit classification tasks. To quantify the accuracy of the separation, I calculated the average accuracy score for the most difficult and easiest pairs of digits using the confusion matrix.
 
 #### SVM:
-For SVM, I used the **SVC** class from the **sklearn.svm** module. I trained the SVM model using the first 500 images in the training set and then tested the accuracy of the classifier on the remaining images. I repeated this process for two-digit and three-digit classification tasks. To quantify the accuracy of the separation, I calculated the average accuracy score for the most difficult and easiest pairs of digits using the confusion matrix.\
+For SVM, I used the **SVC** class from the **sklearn.svm** module. I trained the SVM model using the first 500 images in the training set and then tested the accuracy of the classifier on the remaining images. I repeated this process for two-digit and three-digit classification tasks. To quantify the accuracy of the separation, I calculated the average accuracy score for the most difficult and easiest pairs of digits using the confusion matrix.
 
 #### Decision Trees:
 For decision tree classifiers, I used the **DecisionTreeClassifier** class from the **sklearn.tree** module. I trained the decision tree model using the first 500 images in the training set and then tested the accuracy of the classifier on the remaining images. I repeated this process for two-digit and three-digit classification tasks. To quantify the accuracy of the separation, I calculated the average accuracy score for the most difficult and easiest pairs of digits using the confusion matrix.
