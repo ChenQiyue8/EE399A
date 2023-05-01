@@ -2,7 +2,7 @@
 
 ## Abstract:
 
-This project analyzes the MNIST dataset using various machine learning techniques. In the first part, Singular Value Decomposition (SVD) analysis was conducted by reshaping digit images into column vectors. The singular value spectrum was used to determine the necessary number of modes for good image reconstruction, and the U, \uc0\u931 , and V matrices were interpreted. Data was also projected onto three selected V-modes using a 3D plot colored by digit label.
+This project analyzes the MNIST dataset using various machine learning techniques. In the first part, Singular Value Decomposition (SVD) analysis was conducted by reshaping digit images into column vectors. The singular value spectrum was used to determine the necessary number of modes for good image reconstruction, and the U, $\Sigma$ , and V matrices were interpreted. Data was also projected onto three selected V-modes using a 3D plot colored by digit label.
 
 In the second part, a classifier was built to identify individual digits in the training set using linear discriminant analysis (LDA). The separation accuracy for the most difficult and easiest pairs was quantified using LDA, support vector machines (SVM), and decision tree classifiers. 
 
