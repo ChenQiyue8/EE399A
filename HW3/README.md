@@ -53,6 +53,14 @@ For decision tree classifiers, I used the **DecisionTreeClassifier** class from 
 ## Sec V. Results
 
 The SVD analysis revealed that the top 50 singular values contained most of the information in the dataset. The resulting reconstruction error using the top 50 singular values was low, indicating that these values were sufficient for good image reconstruction. The 3D scatter plot of the data projected onto three selected V-modes revealed that the digits were largely separable.
+<p>
+  <img src='[https://github.com/qchen4/EE399A/blob/be54602053b45137fd7dff613586485f1c894d51/HW2/Figures/FaceCorrelation.png](https://github.com/qchen4/EE399A/blob/18551ae615307faad3beff1f7f2b50528fa75d77/HW3/image/SingularValue.png)'>
+</p>
+
+
+<p>
+  <img src='[[https://github.com/qchen4/EE399A/blob/be54602053b45137fd7dff613586485f1c894d51/HW2/Figures/FaceCorrelation.png](https://github.com/qchen4/EE399A/blob/18551ae615307faad3beff1f7f2b50528fa75d77/HW3/image/SingularValue.png)](https://github.com/qchen4/EE399A/blob/18551ae615307faad3beff1f7f2b50528fa75d77/HW3/image/Vmodes3D.png)'>
+</p>
 
 The classification results for LDA, SVM, and decision tree classifiers were all successful in identifying and classifying the digits. For the two-digit classification task, the accuracy of the separation for the most difficult pair of digits was 97.8% using LDA, 97.3% using SVM, and 91.8% using decision trees. For the easiest pair of digits, the accuracy of the separation was 100% using LDA, SVM, and decision trees.
 
