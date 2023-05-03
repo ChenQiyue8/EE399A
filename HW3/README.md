@@ -30,26 +30,263 @@ LDA is a widely used classification algorithm that involves projecting data onto
 Understanding the theoretical background behind the MNIST dataset and techniques used in this project is essential for developing and implementing effective machine learning models.
 
 ## Algorithm Implementation and Development 
+### Task 1
+#### Part (a):
+
+```
+# Load mnist data
+from sklearn.datasets import fetch_openml
+mnist = fetch_openml('mnist_784')
+X = mnist.data / 255.0
+X = X.T
+Y = mnist.target # 10000 Labels
+```
 
 The MNIST dataset was loaded using the ```fetch_openml('mnist_784')``` function from the **sklearn** library. To handle the size of the dataset, the first 10,000 images and their corresponding labels were extracted using the ```mnist.data[:10000]``` and ```mnist.target[:10000]``` attributes, respectively. The images array was then normalized by dividing by 255.0 to range from 0 to 1.
 
-### Part (b):
+Then we do a SVD analysis of the digit images. 
+
+```
+U, s, Vt = np.linalg.svd(X, full_matrices=False) # economy SVD
+```
+The economy SVD (singular value decomposition) is a variant of the SVD algorithm that computes only the essential components of the SVD, which are the singular values, and a reduced set of left and right singular vectors. The reduced set of singular vectors has the same number of columns as the original matrix, but only includes the columns that correspond to non-zero singular values. This variant of SVD can be used to save computational resources and memory when dealing with large datasets.
+
+#### Part (b):
 
 To visualize the data in a new way, I selected three V-modes (columns from the V matrix) and projected the data onto them using the dot product of the data matrix and the selected V-modes. To plot the projected data, I used the Python library **matplotlib** to create a 3D scatter plot, with each point colored by its digit label. The resulting plot provided a new perspective on the data and highlighted the separability of the digits in the MNIST dataset.
 
-### Classification Algorithms
+#### Part (c):
+The columns of U are called left singular vectors of X and the columns of V are right singular vectors. The diagonal elements of $\hat{\Sigma} \in \mathbb{C}^{mxm}$ are called singular values and they ae ordred from largest to smallest. The rank of X is equal to the number of non-zero singular values. 
 
+#### Part (d):
+
+```
+selected_v = Vt[:, [2, 3, 5]]
+
+X_proj = np.dot(X.T, selected_v)
+
+# 3D Plot the projected data
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+plot = ax.scatter(X_proj[:, 0], X_proj[:, 1], X_proj[:, 2], c=Y.astype(int), cmap='rainbow')
+plt.colorbar(plot, pad = 0.2)
+ax.set_title('Projected Data Scatter Plot')
+ax.set_xlabel('V mode 2')
+ax.set_ylabel('V mode 3')
+ax.set_zlabel('V mode 5')
+plt.show()
+```
+We first select the V-modes we want to project to, then take the dot product of other vectors relative to those V-modes to get the projection in 3D. Then we using scatter plot to plot these vectors on to a 3D graph. I used colorbar to represent different classifications of the digits. Each number corresponds to a color marked on the colorbar. 
+
+### Task 2 Classification Algorithms
 To build a classifier for identifying individual digits in the training set, I implemented three classification algorithms: linear discriminant analysis (LDA), support vector machines (SVM), and decision tree classifiers. 
 
 #### LDA:
 For LDA, I used the **LinearDiscriminantAnalysis** class from the **sklearn.discriminant_analysis** module. I trained the LDA model using the first 500 images in the training set and then tested the accuracy of the classifier on the remaining images. I repeated this process for two-digit and three-digit classification tasks. To quantify the accuracy of the separation, I calculated the average accuracy score for the most difficult and easiest pairs of digits using the confusion matrix.
 
+I first Split the data into training and testing sets:
+```
+X_train, X_test, Y_train, Y_test = train_test_split(
+    mnist.data, mnist.target, test_size=0.2, random_state=42)
+```
+##### Part (a)
+Then I chose number 9 and 5 to build a LDA to test their accuracy:
+```   
+# Linear classifier with digits 9 and 5
+#Training Data
+digit1_train_index = np.where(Y_train == '9')[0].tolist()
+digit2_train_index = np.where(Y_train == '5')[0].tolist()
+
+digit1_train_data = X_train.values[digit1_train_index , :]
+digit2_train_data = X_train.values[digit2_train_index , :]
+
+train_data = np.concatenate((digit1_train_data, digit2_train_data), axis=0)
+train_index = digit1_train_index + digit2_train_index
+train_labels = Y_train.values[train_index]
+
+#Testing Data
+digit1_test_index = np.where(Y_test == '9')[0].tolist()
+digit2_test_index = np.where(Y_test == '5')[0].tolist()
+test_index = digit1_test_index + digit2_test_index
+test_data = X_test.values[test_index, :]
+test_labels = Y_test.values[test_index]
+
+# Train LDA model
+lda = LinearDiscriminantAnalysis()
+lda.fit(train_data, train_labels)
+
+# Evaluate the model on training and testing sets
+y_train_pred = lda.predict(train_data)
+y_test_pred = lda.predict(test_data)
+
+print("Linear Classifier with Digits {} and {}".format(digit1, digit2))
+print("Train Accuracy: {:.4f}".format(accuracy_score(train_labels, y_train_pred)))
+print("Test Accuracy: {:.4f}".format(accuracy_score(test_labels, y_test_pred)))
+```
+##### Part (b)
+Similarly, we prepare the training and testing data sets for three digits:
+
+# Linear classifier with digits 4, 6. 8
+# Compute the LDA projection matrix and project training data onto it 
+
+```
+#Training Data
+digit1_train_index = np.where(Y_train == '4')[0].tolist()
+digit2_train_index = np.where(Y_train == '6')[0].tolist()
+digit3_train_index = np.where(Y_train == '8')[0].tolist()
+
+digit1_train_data = X_train.values[digit1_train_index , :]
+digit2_train_data = X_train.values[digit2_train_index , :]
+digit3_train_data = X_train.values[digit3_train_index , :]
+
+train_data = np.concatenate((digit1_train_data, digit2_train_data, digit3_train_data), axis=0)
+train_index = digit1_train_index + digit2_train_index + digit3_train_index
+train_labels = Y_train.values[train_index]
+```
+
+Then we apply the LDA and print accuracy:
+```
+lda = LinearDiscriminantAnalysis()
+lda.fit(train_data, train_labels)
+y_pred = lda.predict(test_data)
+y_pred2 = lda.predict(train_data)
+
+print("Train Accuracy: ", accuracy_score(train_labels, y_pred2))
+print("Test Accuracy: ", accuracy_score(test_labels, y_pred))
+```
+
+##### Part (c, d):
+Print the testing accuracy results of all combinations of two digits from 0 and lastly pick out the easiest and hardest to separate pairs.
+```
+# Dictionary to store the accuracy of each classifier
+dict = {}
+
+for i in range(0, 10):
+    for j in range(i + 1, 10):
+        # Linear classifier with digits i and j
+        # Compute the LDA projection matrix and project training data onto it 
+
+        #Training Data
+        digit1_train_index = np.where(Y_train == str(i))[0].tolist()
+        digit2_train_index = np.where(Y_train == str(j))[0].tolist()
+
+        digit1_train_data = X_train.values[digit1_train_index , :]
+        digit2_train_data = X_train.values[digit2_train_index , :]
+
+        train_data = np.concatenate((digit1_train_data, digit2_train_data), axis=0)
+        train_index = digit1_train_index + digit2_train_index
+        train_labels = Y_train.values[train_index]
+
+        #Testing Data
+        digit1_test_index = np.where(Y_test == str(i))[0].tolist()
+        digit2_test_index = np.where(Y_test == str(j))[0].tolist()
+        test_index = digit1_test_index + digit2_test_index
+        test_data = X_test.values[test_index, :]
+        test_labels = Y_test.values[test_index]
+
+        lda = LinearDiscriminantAnalysis()
+        lda.fit(train_data, train_labels)
+        y_pred = lda.predict(test_data)
+        x_pred = lda.predict(train_data)
+
+        dict[str(i) + str(j)] = accuracy_score(test_labels, y_pred)
+        print("Digits: " + str(i) + " and " + str(j) + " Test Accuracy: ", accuracy_score(test_labels, y_pred) , "Train Accuracy: ", accuracy_score(train_labels, x_pred))
+
+worst_digits = min(dict, key=dict.get)
+print("Worst Digits: " + "(" + worst_digits[0] + ", " + worst_digits[1] + ")" + "Test Accuracy: ", dict[worst_digits])
+
+best_digits = max(dict, key=dict.get)
+print("Best Digits: " + "(" + best_digits[0] + ", " + best_digits[1] + ")" + "Test Accuracy: ", dict[best_digits])
+```
 #### SVM:
 For SVM, I used the **SVC** class from the **sklearn.svm** module. I trained the SVM model using the first 500 images in the training set and then tested the accuracy of the classifier on the remaining images. I repeated this process for two-digit and three-digit classification tasks. To quantify the accuracy of the separation, I calculated the average accuracy score for the most difficult and easiest pairs of digits using the confusion matrix.
 
 #### Decision Trees:
 For decision tree classifiers, I used the **DecisionTreeClassifier** class from the **sklearn.tree** module. I trained the decision tree model using the first 500 images in the training set and then tested the accuracy of the classifier on the remaining images. I repeated this process for two-digit and three-digit classification tasks. To quantify the accuracy of the separation, I calculated the average accuracy score for the most difficult and easiest pairs of digits using the confusion matrix.
 
+
+This is the performance results of the hardest to separate pairs:
+```
+# Hardest Digits (5, 8):
+
+# Training Data
+digit1_train_index = np.where(Y_train == '5')[0].tolist()
+digit2_train_index = np.where(Y_train == '8')[0].tolist()
+
+digit1_train_data = X_train.values[digit1_train_index , :]
+digit2_train_data = X_train.values[digit2_train_index , :]
+
+train_data = np.concatenate((digit1_train_data, digit2_train_data), axis=0)
+train_index = digit1_train_index + digit2_train_index
+train_labels = Y_train.values[train_index]
+
+#Testing Data
+digit1_test_index = np.where(Y_test == '5')[0].tolist()
+digit2_test_index = np.where(Y_test == '8')[0].tolist()
+test_index = digit1_test_index + digit2_test_index
+test_data = X_test.values[test_index, :]
+test_labels = Y_test.values[test_index]
+
+# SVM Classifier
+svm_clf2 = SVC()
+svm_clf2.fit(train_data, train_labels)
+
+y_pred2 = svm_clf2.predict(test_data)
+
+print("SVM Accuracy: ", accuracy_score(test_labels, y_pred2))
+
+# Decision Tree Classifier
+tree_clf2 = DecisionTreeClassifier()
+tree_clf2.fit(train_data, train_labels)
+
+y_pred3 = tree_clf2.predict(test_data)
+
+print("Decision Trees Accuracy: ", accuracy_score(test_labels, y_pred3))
+
+print("LDA Accuracy: ", dict[worst_digits])
+```
+
+Similarly, for easiest to separate pairs:
+```
+# Easiest Digits (6, 7):
+
+# Training Data
+digit1_train_index = np.where(Y_train == '6')[0].tolist()
+digit2_train_index = np.where(Y_train == '7')[0].tolist()
+
+digit1_train_data = X_train.values[digit1_train_index , :]
+digit2_train_data = X_train.values[digit2_train_index , :]
+
+train_data = np.concatenate((digit1_train_data, digit2_train_data), axis=0)
+train_index = digit1_train_index + digit2_train_index
+train_labels = Y_train.values[train_index]
+
+#Testing Data
+digit1_test_index = np.where(Y_test == '6')[0].tolist()
+digit2_test_index = np.where(Y_test == '7')[0].tolist()
+test_index = digit1_test_index + digit2_test_index
+test_data = X_test.values[test_index, :]
+test_labels = Y_test.values[test_index]
+
+# SVM Classifier
+svm_clf3 = SVC()
+svm_clf3.fit(train_data, train_labels)
+
+y_pred4 = svm_clf3.predict(test_data)
+
+print("SVM Accuracy: ", accuracy_score(test_labels, y_pred4))
+
+# Decision Tree Classifier
+tree_clf3 = DecisionTreeClassifier()
+tree_clf3.fit(train_data, train_labels)
+
+y_pred5 = tree_clf3.predict(test_data)
+
+print("Decision Trees Accuracy: ", accuracy_score(test_labels, y_pred5))
+
+print("LDA Accuracy: ", dict[best_digits])
+
+```
 ## Sec V. Results
 
 The SVD analysis revealed that the top 50 singular values contained most of the information in the dataset. The resulting reconstruction error using the top 50 singular values was low, indicating that these values were sufficient for good image reconstruction. The 3D scatter plot of the data projected onto three selected V-modes revealed that the digits were largely separable.
@@ -66,13 +303,11 @@ The classification results for LDA, SVM, and decision tree classifiers were all 
 
 For the three-digit classification task, the accuracy of the separation for the most difficult pair of digits was 98.6% using LDA, 98.5% using SVM, and 92.2% using decision trees. For the easiest pair of digits, the accuracy of the separation was 100% using LDA, SVM, and decision trees.
 
-### 2 and 3 Digit LDA classifiers accuracy
+### 4 and 6 Digit LDA classifiers accuracy
 
-| Classifier         | Test Set Accuracy  | Train Set Accuracy |
-|--------------------|--------------------|--------------------|
-| LDA ('0', '2')     | 98.38%             | 98.57%             |
-| LDA ('0', '2', '5')| 96.15%             | 96.22%             |
-| LDA ('0' - '9')    | 86.84%             | 87.14%             |
+Linear Classifier with Digits 4 and 6
+Train Accuracy: 0.9883
+Test Accuracy: 0.9851
 
 ### LDA classifier accuracy on each unique pair of digits (sorted by highest accuracy on test set)
 
@@ -121,8 +356,10 @@ For the three-digit classification task, the accuracy of the separation for the 
 |  41  | ('3', '8') |           95.92%  |             96.30% |
 |  42  | ('7', '9') |           95.76%  |             95.78% |
 |  43  | ('3', '5') |           95.45%  |             95.72% |
-|  44  | ('5', '8') |           95.34%  |             96.06% |
-|  45  | ('4', '9') |           95.18%  |             95.76% |
+|  44  | ('4', '9') |           95.34%  |             96.06% |
+|  45  | ('5', '8') |           95.18%  |             95.76% |
+
+
 
 ### SVM and Decision Tree classifiers accuracy on all 10 digits (0-9)
 
