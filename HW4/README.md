@@ -378,18 +378,45 @@ print("Decision Tree Accuracy: {:.2f}%".format(accuracy * 100))
 
 ## Computational Results
 
+### Problem 1(i)
 <img width="558" alt="Screenshot 2023-05-12 at 3 34 49 AM" src="https://github.com/qchen4/EE399A/assets/98017700/77fa24dc-fec5-4881-bf69-d69b9795ce81">
 
 
 Plot the loss curve
 
 
-
+### Problem 1(ii)
 <img width="578" alt="Screenshot 2023-05-12 at 3 35 34 AM" src="https://github.com/qchen4/EE399A/assets/98017700/44f96ad8-45a5-4ea0-bf64-6b0334043dde">
 
 
 
 
+<img width="563" alt="Screenshot 2023-05-12 at 3 37 05 AM" src="https://github.com/qchen4/EE399A/assets/98017700/3b4cb5ba-3779-4ac0-bff8-555d74ff12ff">
+
+### Problem 1(iii)
+
+<img width="581" alt="Screenshot 2023-05-12 at 3 38 01 AM" src="https://github.com/qchen4/EE399A/assets/98017700/0b61fd30-2f99-4e3e-a694-24a340d4a9f8">
+
+
+
+
+
+<img width="566" alt="Screenshot 2023-05-12 at 3 38 11 AM" src="https://github.com/qchen4/EE399A/assets/98017700/c26e9453-c439-4ace-b68e-13afd4231046">
+
+
+
+### Problem 1(iv)
+
+<img width="726" alt="Screenshot 2023-05-12 at 3 39 10 AM" src="https://github.com/qchen4/EE399A/assets/98017700/b2feb515-0e31-49a9-827a-de7610fad32d">
+
+
+
+
+
+
+### Problem 2(i)
+
+<img width="488" alt="Screenshot 2023-05-12 at 3 40 08 AM" src="https://github.com/qchen4/EE399A/assets/98017700/33809a24-5183-4622-8cd7-eccf1831854c">
 
 
 
@@ -418,15 +445,7 @@ Plot the loss curve
 
 
 
-
-
-
-
-
-
-
-
-
+### Problem 2(ii)
 
 
 
