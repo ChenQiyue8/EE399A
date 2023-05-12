@@ -398,9 +398,7 @@ Training progress for FFNN train set size of 10:
 
 <img width="600" alt="Screenshot 2023-05-12 at 3 43 03 AM" src="https://github.com/qchen4/EE399A/assets/98017700/29fa1264-d7ea-44ae-812b-20fc87268483">
 
-
 <img width="581" alt="Screenshot 2023-05-12 at 3 38 01 AM" src="https://github.com/qchen4/EE399A/assets/98017700/0b61fd30-2f99-4e3e-a694-24a340d4a9f8">
-
 
 <img width="566" alt="Screenshot 2023-05-12 at 3 38 11 AM" src="https://github.com/qchen4/EE399A/assets/98017700/c26e9453-c439-4ace-b68e-13afd4231046">
 
@@ -419,25 +417,10 @@ Upon comparing the performance of the feedforward neural network (FFNN) with the
 <img width="488" alt="Screenshot 2023-05-12 at 3 40 08 AM" src="https://github.com/qchen4/EE399A/assets/98017700/33809a24-5183-4622-8cd7-eccf1831854c">
 
 
-
 <img width="1133" alt="Screenshot 2023-05-12 at 3 52 30 AM" src="https://github.com/qchen4/EE399A/assets/98017700/5e7ae7de-8b85-4532-81f9-2299a1dfaee9">
 
 
 Accuracy of the FFNN: 96.36%
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
