@@ -1,5 +1,5 @@
 # EE-399-HW4
-**Author: Qiyue Cheni**
+**Author: Qiyue Chen**
 
 **Date: 5/7/2023**
 
