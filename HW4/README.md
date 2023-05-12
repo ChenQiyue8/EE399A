@@ -47,7 +47,7 @@ These concepts have been covered in previous assignments, and they have their ow
 ### Problem 1
 #### Part(i) Fit the data to a three layer feed forward neural network.
 
-```
+```python
 # Problem I
 # Part (i)
 # Define the data
@@ -67,7 +67,7 @@ X_test, Y_test = X[20:], Y[20:]
 ```
 The given code snippet performs data preprocessing and splitting for a machine learning problem. It starts by defining the independent variable `X` and the dependent variable `Y`. Then, it standardizes the data by subtracting the mean and dividing by the standard deviation for both `X` and `Y`. Finally, it splits the standardized data into training and test sets using array slicing. The first 20 elements are assigned to the training set, while the remaining elements are assigned to the test set. This preprocessing and splitting prepare the data for further machine learning tasks.
 
-```
+```python
 # Convert data to PyTorch tensors
 X_train_tensor = Variable(torch.Tensor(X_train).unsqueeze(1))
 Y_train_tensor = Variable(torch.Tensor(Y_train).unsqueeze(1))
@@ -112,7 +112,8 @@ The given code snippet performs the following tasks:
 In summary, the code prepares the data by converting it into PyTorch tensors, defines a neural network model with three layers, initializes the model instance, specifies the loss function (MSE), and sets up the optimizer (Adam) for training the model.
 
 #### Part ii) Using the first 20 data points as training data, fit the neural network. Compute the least-square error for each of these over the training points. Then compute the least square error of these models on the test data which are the remaining 10 data points.
-```
+
+```python
 # Part (ii)
 # Train the model
 num_epochs = 10000
@@ -156,7 +157,7 @@ This code trains a neural network model using a specified number of epochs. It p
 
 Overall, the code iteratively trains the model, updates the parameters, and tracks the training and test losses to monitor the model's performance during training.
 
-```
+```python
 # Plot the loss curve
 plt.plot(train_losses, label='Training Loss')
 plt.plot(test_losses, label='Test Loss')
@@ -168,7 +169,7 @@ plt.show()
 ```
 This code plots the loss function for both train and test vs epoch.
 
-```
+```python
 # De-normalize the predicted output
 X_tensor = Variable(torch.Tensor(X).unsqueeze(1))
 Y_pred1 = net(X_tensor.to(device)).cpu().detach().numpy() * Ystd + Ymean
@@ -186,7 +187,8 @@ plt.show()
 Fit the model to the test data and plot the prediction function.
 
 #### Part(iii) Repeat (ii) but use the first 10 and last 10 data points as training data. Then fit the model to the test data (which are the 10 held out middle data points). Compare these results to (ii)
-```
+
+```python
 # Part (iii)
 # Split the data into training and test sets
 X_train, Y_train = X[:10], Y[:10]
@@ -200,7 +202,8 @@ See Computational Results.
 ### Problem 2
 #### Part(i)
 Prepare dataset:
-```# Part (i)
+```python
+# Part (i)
 # Load MNIST dataset
 mnist = fetch_openml('mnist_784')
 X = mnist.data.astype('float32') / 255.
@@ -211,7 +214,7 @@ y = np.array(y)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 ```
 Then we apply the 20 dimension PCA analysis:
-```
+```python
 # Perform PCA analysis on the images
 pca = PCA(n_components=20)
 X_train_pca = pca.fit_transform(X_train)
@@ -235,7 +238,7 @@ This code performs PCA analysis on a dataset of images. It applies PCA to the tr
 
 # Part (ii) Build a feed-forward neural network to classify the digits. Compare the results of the neural network against LSTM, SVM (support vector machines) and decision tree classifiers.
 
-```
+```python
 # Convert data to PyTorch tensors
 X_train_pca = torch.from_numpy(X_train_pca).float()
 X_test_pca = torch.from_numpy(X_test_pca).float()
@@ -243,7 +246,7 @@ y_train = torch.from_numpy(y_train).long()
 y_test = torch.from_numpy(y_test).long()
 ```
 
-```
+```python
 # Define the neural network architecture
 class Net(nn.Module):
     def __init__(self):
@@ -279,7 +282,7 @@ Finally, the output of the last fully connected layer (`fc4`) is returned after 
 Overall, this code defines a neural network with four fully connected layers, dropout regularization, and ReLU activation functions, suitable for performing classification tasks.
 
 
-```
+```python
 # Initialize the neural network
 model = Net().to(device)
 
@@ -309,7 +312,7 @@ This code initializes a neural network model with four fully connected layers, d
 
 
 
-```
+```python
 # Reshape the data for the LSTM network
 X_train_lstm = X_train.reshape((X_train.shape[0], 28, 28))
 X_test_lstm = X_test.reshape((X_test.shape[0], 28, 28))
@@ -351,62 +354,88 @@ with torch.no_grad():
     accuracy = accuracy_score(y_test, y_pred.cpu())
     print("LSTM Accuracy: {:.2f}%".format(accuracy * 100))
 ```
+This code prepares and trains an LSTM network for a classification task. It reshapes the input data into sequences, initializes an LSTM network with an LSTM layer and a fully connected layer, defines the loss function and optimizer, and trains the network for a specified number of epochs. Finally, it evaluates the trained model on a test set and prints the accuracy.
 
+SVM:
+```python
+# Train a SVM classifier
+svm_model = SVC()
+svm_model.fit(X_train_pca, y_train)
+y_pred = svm_model.predict(X_test_pca)
+accuracy = accuracy_score(y_test, y_pred)
+print("SVM Accuracy: {:.2f}%".format(accuracy * 100))
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+decision tree classifier:
+```python
+# Train a decision tree classifier
+tree_model = DecisionTreeClassifier()
+tree_model.fit(X_train_pca, y_train)
+y_pred = tree_model.predict(X_test_pca)
+accuracy = accuracy_score(y_test, y_pred)
+print("Decision Tree Accuracy: {:.2f}%".format(accuracy * 100))
+```
 
 ## Computational Results
+
+<img width="558" alt="Screenshot 2023-05-12 at 3 34 49 AM" src="https://github.com/qchen4/EE399A/assets/98017700/77fa24dc-fec5-4881-bf69-d69b9795ce81">
+
+
+Plot the loss curve
+<img width="578" alt="Screenshot 2023-05-12 at 3 35 34 AM" src="https://github.com/qchen4/EE399A/assets/98017700/44f96ad8-45a5-4ea0-bf64-6b0334043dde">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
