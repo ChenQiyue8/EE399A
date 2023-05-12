@@ -200,7 +200,7 @@ The rest is same to (ii)
 See Computational Results.
 
 ### Problem 2
-#### Part(i)
+#### Part(i) Compute the first 20 PCA modes of the digit images.
 Prepare dataset:
 ```python
 # Part (i)
@@ -236,7 +236,7 @@ plt.show()
 ```
 This code performs PCA analysis on a dataset of images. It applies PCA to the training data and transforms it into the principal component space. Then, it applies the same transformation to the test data. The code visualizes the first 20 principal components as images in a grid of subplots. This visualization provides insights into the significant patterns or features captured by PCA.
 
-# Part (ii) Build a feed-forward neural network to classify the digits. Compare the results of the neural network against LSTM, SVM (support vector machines) and decision tree classifiers.
+#### Part (ii) Build a feed-forward neural network to classify the digits. Compare the results of the neural network against LSTM, SVM (support vector machines) and decision tree classifiers.
 
 ```python
 # Convert data to PyTorch tensors
@@ -394,22 +394,22 @@ Plot the loss curve
 <img width="563" alt="Screenshot 2023-05-12 at 3 37 05 AM" src="https://github.com/qchen4/EE399A/assets/98017700/3b4cb5ba-3779-4ac0-bff8-555d74ff12ff">
 
 ### Problem 1(iii)
+Training progress for FFNN train set size of 10:
+
+<img width="600" alt="Screenshot 2023-05-12 at 3 43 03 AM" src="https://github.com/qchen4/EE399A/assets/98017700/29fa1264-d7ea-44ae-812b-20fc87268483">
+
 
 <img width="581" alt="Screenshot 2023-05-12 at 3 38 01 AM" src="https://github.com/qchen4/EE399A/assets/98017700/0b61fd30-2f99-4e3e-a694-24a340d4a9f8">
 
 
-
-
-
 <img width="566" alt="Screenshot 2023-05-12 at 3 38 11 AM" src="https://github.com/qchen4/EE399A/assets/98017700/c26e9453-c439-4ace-b68e-13afd4231046">
-
 
 
 ### Problem 1(iv)
 
 <img width="726" alt="Screenshot 2023-05-12 at 3 39 10 AM" src="https://github.com/qchen4/EE399A/assets/98017700/b2feb515-0e31-49a9-827a-de7610fad32d">
 
-
+Upon comparing the performance of the feedforward neural network (FFNN) with the least-square regression method, it becomes evident that the FFNN exhibits a significant issue of overfitting. It fails to provide meaningful predictions for future data points, indicating that the FFNN is simply attempting to fit the training dataset without effectively capturing useful features or patterns. The presence of overfitting suggests that the FFNN is excessively complex for the given training set, which consists of a relatively small number of data points (10 or 20). This highlights a fundamental difference between FFNN and regression approaches: FFNN requires a larger amount of training data to effectively learn and generalize patterns. The limited size of our training set impedes the FFNN's ability to generalize and extrapolate beyond the specific examples it has seen. To mitigate the overfitting issue and enhance the FFNN's performance, it would be beneficial to expand the training dataset with a more diverse and representative set of examples.
 
 
 
@@ -420,10 +420,10 @@ Plot the loss curve
 
 
 
+<img width="1133" alt="Screenshot 2023-05-12 at 3 52 30 AM" src="https://github.com/qchen4/EE399A/assets/98017700/5e7ae7de-8b85-4532-81f9-2299a1dfaee9">
 
 
-
-
+Accuracy of the FFNN: 96.36%
 
 
 
@@ -446,35 +446,50 @@ Plot the loss curve
 
 
 ### Problem 2(ii)
+LSVM training accuracies:
+
+<img width="246" alt="Screenshot 2023-05-12 at 3 53 25 AM" src="https://github.com/qchen4/EE399A/assets/98017700/9d6d8e73-afa1-4a19-93c7-880bdac4938c">
+
+
+
+<img width="310" alt="Screenshot 2023-05-12 at 3 54 02 AM" src="https://github.com/qchen4/EE399A/assets/98017700/e5d79d70-98b2-4cb9-a86e-c910cb7f70c6">
+
+
+
+<img width="384" alt="Screenshot 2023-05-12 at 3 54 11 AM" src="https://github.com/qchen4/EE399A/assets/98017700/c31b412f-b1f5-4336-8041-b87daf742f3a">
 
 
 
 
 
+Here is a breif comparison of their accuracy on the testset using different classifiers and neural network.
+
+Feedforward neural network: The accuracy of the three-layer feedforward neural network on the MNIST test set is 0.9729, which is a high accuracy compared to other classifiers.
+* LSTM: The accuracy of the LSTM classifier on the MNIST test set is 24.71%, which is the lowest among all accuracies.
+* SVM: The accuracy of the SVM classifier on the MNIST test set is 97.38%, which has the best performance among all four types of models.
+* Decision tree: The accuracy of the decision tree classifier on the MNIST test set is 84.96%, which is lower than the accuracy of FFNN and SVM but higher than LSTM.
+Therefore, the SVM has the highest accuracy among the tested classifiers. However, it is worth noting that the performance of these classifiers can vary depending on the hyperparameters and specific implementation used.
 
 
+The LSTM network may perform poorly on the MNIST dataset due to several reasons:
 
+1. **Limited sequential information**: The MNIST dataset consists of individual images of isolated digits, where the spatial arrangement of pixels does not carry significant sequential information. LSTMs are designed to capture long-term dependencies in sequential data, such as natural language processing or time series analysis. Since the MNIST dataset does not have strong temporal dependencies, LSTM may not effectively utilize its sequential modeling capabilities.
 
+2. **Over-complexity**: LSTMs are relatively complex models with a large number of parameters. The simplicity of the MNIST dataset, where the task is to classify individual digits, does not require the level of complexity offered by an LSTM network. A simpler model, such as a feed-forward neural network or a convolutional neural network (CNN), is often sufficient for achieving good performance on the MNIST dataset.
 
+3. **Limited dataset size**: The MNIST dataset consists of only 60,000 training images and 10,000 test images. LSTM models typically require a large amount of training data to generalize well and learn meaningful patterns. The limited size of the MNIST dataset may hinder the LSTM's ability to learn complex representations and lead to overfitting.
 
+4. **Model architecture and hyperparameters**: The specific architecture and hyperparameters of the LSTM network can greatly impact its performance. If the LSTM network is not properly configured, it may struggle to learn meaningful representations from the MNIST data. Optimizing the architecture, hyperparameters, and regularization techniques can potentially improve the LSTM's performance on the dataset.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Considering these factors, it is often more effective to utilize simpler models like feed-forward neural networks or CNNs for the MNIST dataset, as they are better suited for image classification tasks and have demonstrated superior performance compared to LSTM models.
 
 ## Summary and Conclusions
 
+In this assignment, we conducted two parts of analysis. In the first part, we used a three-layer feedforward neural network to fit a dataset consisting of 31 points. We observed that splitting the data into a training set of the first 10 points and a testing set of the last 10 points resulted in lower error compared to using the first 20 points for training and the remaining 10 points for testing.
 
+Moving on to the second part, we performed analysis on the MNIST dataset, focusing on the first 20 principal components obtained through PCA. We constructed a feedforward neural network using these components and compared its performance with other classifiers such as SVM, LSTM, and decision trees. Among the classifiers, SVM and the feedforward neural network achieved relatively higher accuracy. Fine-tuning and optimizing the parameters of the feedforward neural network could potentially improve its performance further.
+
+This assignment provided a valuable opportunity to apply neural networks and other classifiers to real-world datasets like MNIST. By exploring different models and evaluating their performance, we gained insights into choosing appropriate models. Additionally, utilizing PCA enhanced the performance of the classifiers. Overall, this assignment served as a practical exercise in neural networks and their applications, while also introducing us to other commonly used classifiers in machine learning.
 
 
 
