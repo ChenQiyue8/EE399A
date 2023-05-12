@@ -1,9 +1,7 @@
 # EE-399-HW4
-**Author: Ben Li**
+**Author: Qiyue Cheni**
 **Date: 5/7/2023**
 **Course: SP 2023 EE399**
-
-![nagesh-pca-1](https://cdn.analyticsvidhya.com/wp-content/uploads/2020/02/Comp-1.gif)
 
 ## Abstract
 This homework assignment consists of two parts. In the first part, we are provided with a series of data:
@@ -43,3 +41,396 @@ There are several other important concepts that were introduced in previous assi
 3. Decision Trees: A decision tree is a flowchart-like structure where each internal node represents a feature or attribute, each branch represents a decision rule, and each leaf node represents the outcome. It is a simple yet powerful supervised learning algorithm used for classification and regression tasks. Decision trees are built by recursively partitioning the data based on the values of the input features to maximize the information gain at each node. They provide an interpretable and easily understandable model for decision-making.
 
 These concepts have been covered in previous assignments, and they have their own advantages and applications in machine learning. It's important to understand these concepts and when to apply them based on the problem at hand.
+
+## Algorithm Implementation and Development 
+
+### Problem 1
+#### Part(i) Fit the data to a three layer feed forward neural network.
+
+```
+# Problem I
+# Part (i)
+# Define the data
+X = np.arange(0, 31)
+Y = np.array([30, 35, 33, 32, 34, 37, 39, 38, 36, 36, 37, 39, 42, 45, 45, 41,
+              40, 39, 42, 44, 47, 49, 50, 49, 46, 48, 50, 53, 55, 54, 53])
+
+Xmean, Xstd  = X.mean(), X.std()
+Ymean, Ystd  = Y.mean(), Y.std()
+
+X = (X - Xmean) / Xstd
+Y = (Y - Ymean) / Ystd
+
+# Split the data into training and test sets
+X_train, Y_train = X[:20], Y[:20]
+X_test, Y_test = X[20:], Y[20:]
+```
+The given code snippet performs data preprocessing and splitting for a machine learning problem. It starts by defining the independent variable `X` and the dependent variable `Y`. Then, it standardizes the data by subtracting the mean and dividing by the standard deviation for both `X` and `Y`. Finally, it splits the standardized data into training and test sets using array slicing. The first 20 elements are assigned to the training set, while the remaining elements are assigned to the test set. This preprocessing and splitting prepare the data for further machine learning tasks.
+
+```
+# Convert data to PyTorch tensors
+X_train_tensor = Variable(torch.Tensor(X_train).unsqueeze(1))
+Y_train_tensor = Variable(torch.Tensor(Y_train).unsqueeze(1))
+X_test_tensor = Variable(torch.Tensor(X_test).unsqueeze(1))
+Y_test_tensor = Variable(torch.Tensor(Y_test).unsqueeze(1))
+
+# Define the three layer neural network model
+class Net(torch.nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.layers = nn.Sequential(
+          nn.Linear(1, 1024),
+          nn.ReLU(),
+          nn.Linear(1024, 1)
+        )
+
+    def forward(self, x):
+        x = self.layers(x)
+        return x
+
+# Create an instance of the model
+net = Net().to(device)
+
+# Define the loss function
+criterion = torch.nn.MSELoss()
+
+# Define the optimizer
+optimizer = torch.optim.Adam(net.parameters(), lr=0.01)
+```
+The given code snippet performs the following tasks:
+
+1. Converts the training and test data (`X_train`, `Y_train`, `X_test`, `Y_test`) to PyTorch tensors using the `torch.Tensor()` function and reshapes them to have an additional dimension using `unsqueeze(1)`.
+
+2. Defines a three-layer neural network model using the `torch.nn.Module` class. The model consists of two linear layers with ReLU activation in between. The input size of the first linear layer is 1, and the output size is 1024. The output size of the second linear layer is 1.
+
+3. Creates an instance of the defined neural network model (`Net`) and moves it to the specified device (e.g., GPU) using the `to()` method.
+
+4. Defines the loss function for the model as the Mean Squared Error (MSE) loss using `torch.nn.MSELoss()`.
+
+5. Defines the optimizer to update the parameters of the neural network model using the Adam optimizer with a learning rate of 0.01. The optimizer is initialized with the parameters of the `net` model (`net.parameters()`).
+
+In summary, the code prepares the data by converting it into PyTorch tensors, defines a neural network model with three layers, initializes the model instance, specifies the loss function (MSE), and sets up the optimizer (Adam) for training the model.
+
+#### Part ii) Using the first 20 data points as training data, fit the neural network. Compute the least-square error for each of these over the training points. Then compute the least square error of these models on the test data which are the remaining 10 data points.
+```
+# Part (ii)
+# Train the model
+num_epochs = 10000
+train_losses = []
+test_losses = []
+for epoch in range(num_epochs):
+    # Forward pass
+    outputs = net(X_train_tensor.unsqueeze(1).to(device))
+    loss = criterion(outputs, Y_train_tensor.unsqueeze(1).to(device))
+
+    # Backward and optimize
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    # Compute training and test loss for monitoring
+    train_losses.append(loss.item())
+    test_outputs = net(X_test_tensor.unsqueeze(1).to(device))
+    test_loss = criterion(test_outputs, Y_test_tensor.unsqueeze(1).to(device))
+    test_losses.append(test_loss.item())
+
+    # Print progress
+    if (epoch+1) % 1000 == 0:
+        print(f'Epoch [{epoch+1}/{num_epochs}], Training Loss: {loss.item():.4f}, Test Loss: {test_loss.item():.4f}
+```
+This code trains a neural network model using a specified number of epochs. It performs the following steps:
+
+1. Initializes empty lists to store training and test losses.
+
+2. Enters a loop for each epoch and performs the following operations:
+
+   a. Computes the forward pass by passing the training data through the neural network model.
+   
+   b. Calculates the loss between the predicted outputs and the training labels.
+   
+   c. Backpropagates the loss and updates the model's parameters using the optimizer.
+   
+   d. Computes the loss for both the training and test sets and appends them to their respective lists.
+   
+   e. Prints the training and test loss every 1000 epochs.
+
+Overall, the code iteratively trains the model, updates the parameters, and tracks the training and test losses to monitor the model's performance during training.
+
+```
+# Plot the loss curve
+plt.plot(train_losses, label='Training Loss')
+plt.plot(test_losses, label='Test Loss')
+plt.title('FFNN train set size 20 Epoch vs Loss')
+plt.xlabel('Epoch')
+plt.ylabel('MSE Loss')
+plt.legend()
+plt.show()
+```
+This code plots the loss function for both train and test vs epoch.
+
+```
+# De-normalize the predicted output
+X_tensor = Variable(torch.Tensor(X).unsqueeze(1))
+Y_pred1 = net(X_tensor.to(device)).cpu().detach().numpy() * Ystd + Ymean
+
+
+# Plot the predicted curve with de-normalized data
+plt.plot(X * Xstd + Xmean, Y * Ystd + Ymean, 'o', label='Data')
+plt.plot(X * Xstd + Xmean, Y_pred1, label='Prediction')
+plt.title('FFNN prediction on size 20 train set')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.legend()
+plt.show()
+```
+Fit the model to the test data and plot the prediction function.
+
+#### Part(iii) Repeat (ii) but use the first 10 and last 10 data points as training data. Then fit the model to the test data (which are the 10 held out middle data points). Compare these results to (ii)
+```
+# Part (iii)
+# Split the data into training and test sets
+X_train, Y_train = X[:10], Y[:10]
+X_test, Y_test = X[10:], Y[10:]
+```
+The rest is same to (ii)
+
+#### Part(iv) Compare the models fit in homework one to the neural networks in (ii) and (iii)
+See Computational Results.
+
+### Problem 2
+#### Part(i)
+Prepare dataset:
+```# Part (i)
+# Load MNIST dataset
+mnist = fetch_openml('mnist_784')
+X = mnist.data.astype('float32') / 255.
+y = mnist.target.astype('int')
+
+X = np.array(X)
+y = np.array(y)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+Then we apply the 20 dimension PCA analysis:
+```
+# Perform PCA analysis on the images
+pca = PCA(n_components=20)
+X_train_pca = pca.fit_transform(X_train)
+X_test_pca = pca.transform(X_test)
+
+# Visualize the first 20 PCA modes
+fig, axes = plt.subplots(nrows=4, ncols=5, figsize=(10, 8))
+for i, ax in enumerate(axes.flat):
+    ax.imshow(pca.components_[i].reshape(28, 28), cmap='gray')
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_title('PC %d' % (i+1))
+
+# Add overall title
+plt.suptitle('PCA Analysis: Visualization of the First 20 PCA Modes', fontsize=14, fontweight='bold')
+
+plt.tight_layout()
+plt.show()
+```
+This code performs PCA analysis on a dataset of images. It applies PCA to the training data and transforms it into the principal component space. Then, it applies the same transformation to the test data. The code visualizes the first 20 principal components as images in a grid of subplots. This visualization provides insights into the significant patterns or features captured by PCA.
+
+# Part (ii) Build a feed-forward neural network to classify the digits. Compare the results of the neural network against LSTM, SVM (support vector machines) and decision tree classifiers.
+
+```
+# Convert data to PyTorch tensors
+X_train_pca = torch.from_numpy(X_train_pca).float()
+X_test_pca = torch.from_numpy(X_test_pca).float()
+y_train = torch.from_numpy(y_train).long()
+y_test = torch.from_numpy(y_test).long()
+```
+
+```
+# Define the neural network architecture
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.fc1 = nn.Linear(20, 256)
+        self.fc2 = nn.Linear(256, 128)
+        self.fc3 = nn.Linear(128, 64)
+        self.fc4 = nn.Linear(64, 10)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = nn.functional.dropout(x, p=0.2)
+        x = nn.functional.relu(self.fc2(x))
+        x = nn.functional.dropout(x, p=0.2)
+        x = nn.functional.relu(self.fc3(x))
+        x = nn.functional.dropout(x, p=0.2)
+        x = self.fc4(x)
+        return nn.functional.log_softmax(x, dim=1)
+```
+
+This code defines a neural network architecture using the PyTorch framework. The neural network is implemented as a class called `Net`, which inherits from the `nn.Module` class.
+
+The architecture consists of four fully connected layers (`fc1`, `fc2`, `fc3`, `fc4`). The input to the network is expected to have a size of 20, and the output size is set to 10, representing the number of classes in the classification problem.
+
+In the constructor (`__init__` method) of the `Net` class, the fully connected layers are defined using the `nn.Linear` class. Each layer is specified with the input size and output size. For example, `self.fc1 = nn.Linear(20, 256)` creates a fully connected layer with 20 input neurons and 256 output neurons.
+
+In the `forward` method, the input `x` passes through each layer sequentially. After each fully connected layer, a dropout operation is applied using `nn.functional.dropout` with a dropout probability of 0.2. Dropout helps prevent overfitting by randomly setting a fraction of the input units to 0 during training.
+
+ReLU activation function (`nn.functional.relu`) is applied after `fc2` and `fc3` to introduce non-linearity into the network and enable it to learn complex patterns.
+
+Finally, the output of the last fully connected layer (`fc4`) is returned after applying a log softmax function (`nn.functional.log_softmax`). The log softmax function converts the output values into log probabilities, which are suitable for multi-class classification problems.
+
+Overall, this code defines a neural network with four fully connected layers, dropout regularization, and ReLU activation functions, suitable for performing classification tasks.
+
+
+```
+# Initialize the neural network
+model = Net().to(device)
+
+# Define the loss function and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters())
+
+# Train the neural network
+for epoch in tqdm(range(10000), desc='Training', unit='epoch', unit_scale=True, ncols=80, bar_format='{l_bar}{bar:30}{r_bar}{bar:-10b}'):
+    optimizer.zero_grad()
+    output = model(X_train_pca.to(device))
+    loss = criterion(output, y_train.to(device))
+    loss.backward()
+    optimizer.step()
+    if epoch % 100 ==0:
+      print(" Epoch: {:d}, Loss: {:.4f}".format(epoch+1, loss.item()))
+
+# Evaluate the model on the test set
+with torch.no_grad():
+    output = model(X_test_pca.to(device))
+    y_pred = torch.argmax(output, dim=1)
+    accuracy = accuracy_score(y_test, y_pred.cpu())
+    print("Accuracy: {:.2f}%".format(accuracy * 100))
+```
+
+This code initializes a neural network model with four fully connected layers, defines a cross-entropy loss function and an Adam optimizer, trains the model on a training dataset, and evaluates its accuracy on a test dataset. The training loop runs for 10,000 epochs, updating the model's parameters using backpropagation and optimizing with Adam. The model's performance is printed every 100 epochs. Finally, the trained model is used to make predictions on the test set, and the accuracy is calculated and displayed.
+
+
+
+```
+# Reshape the data for the LSTM network
+X_train_lstm = X_train.reshape((X_train.shape[0], 28, 28))
+X_test_lstm = X_test.reshape((X_test.shape[0], 28, 28))
+
+X_train_lstm = torch.tensor(X_train_lstm, dtype = torch.float32,  requires_grad = True)
+X_test_lstm = torch.tensor(X_test_lstm, dtype = torch.float32,  requires_grad = True)
+class LSTMNet(nn.Module):
+    def __init__(self):
+        super(LSTMNet, self).__init__()
+        self.lstm1 = nn.LSTM(28, 128, batch_first=True)
+        self.fc1 = nn.Linear(128, 10)
+
+    def forward(self, x):
+        x, _ = self.lstm1(x)
+        x = x[:, -1, :]
+        x = self.fc1(x)
+        return nn.functional.log_softmax(x, dim=1)
+
+# Initialize the LSTM network
+lstm_model = LSTMNet().to(device)
+
+# Define the loss function and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(lstm_model.parameters())
+
+# Train the LSTM network
+for epoch in range(20):
+    optimizer.zero_grad()
+    output = lstm_model(X_train_lstm.to(device))
+    loss = criterion(output, y_train.to(device))
+    loss.backward()
+    optimizer.step()
+    print("Epoch: {:d}, Loss: {:.4f}".format(epoch+1, loss.item()))
+
+# Evaluate the LSTM model on the test set
+with torch.no_grad():
+    output = lstm_model(X_test_lstm.to(device))
+    y_pred = torch.argmax(output, dim=1)
+    accuracy = accuracy_score(y_test, y_pred.cpu())
+    print("LSTM Accuracy: {:.2f}%".format(accuracy * 100))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Computational Results
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Summary and Conclusions
+
+
+
+
+
+
+
+
+
+
+
+
