@@ -1,4 +1,4 @@
-# EE-399-HW4
+# EE-399-HW4 Analysis of Feedforward Neural Network and Comparison with Other Classifiers on Dataset and MNIST
 **Author: Qiyue Chen**
 
 **Date: 5/7/2023**
