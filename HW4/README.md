@@ -382,6 +382,9 @@ print("Decision Tree Accuracy: {:.2f}%".format(accuracy * 100))
 
 
 Plot the loss curve
+
+
+
 <img width="578" alt="Screenshot 2023-05-12 at 3 35 34 AM" src="https://github.com/qchen4/EE399A/assets/98017700/44f96ad8-45a5-4ea0-bf64-6b0334043dde">
 
 
