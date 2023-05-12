@@ -448,7 +448,7 @@ Accuracy of the FFNN: 96.36%
 ### Problem 2(ii)
 LSVM training accuracies:
 
-<img width="246" alt="Screenshot 2023-05-12 at 3 53 25 AM" src="https://github.com/qchen4/EE399A/assets/98017700/9d6d8e73-afa1-4a19-93c7-880bdac4938c">
+<img width="260" alt="Screenshot 2023-05-12 at 4 02 17 AM" src="https://github.com/qchen4/EE399A/assets/98017700/a13095ac-a05e-4bce-9a91-d5f1ead92a9f">
 
 
 
