@@ -377,27 +377,19 @@ plot_predictions(targets_35, predictions_35, f'ESN for rho={rho_35}')
 
 ## Computational Results
 
-### Error on Lorenz system with unseen values of rho
+### Error on Lorenz System with Unseen Values of ρ
 
-NN:
-Loss for rho =  17 :  51.017696380615234
+The table below shows the error rates (loss) obtained for each neural network architecture when predicting the Lorenz system's future states for unseen values of ρ.
 
-Loss for rho =  35 :  119.07109832763672
+| Neural Network | ρ = 17 | ρ = 35 |
+|----------------|--------|--------|
+| NN             | 51.02  | 119.07 |
+| LSTM           | 34.12  | 55.88  |
+| RNN            | 43.22  | 55.39  |
+| ESN            | 20.92  | 38.05  |
 
-LSTM:
-Loss for rho =  17 :  34.123451232910156
-
-Loss for rho =  35 :  55.88348388671875
-
-RNN:
-Loss for rho =  17 :  43.22047805786133
-
-Loss for rho =  35 :  55.39307403564453
-
-ESN:
-Loss for rho =  17 :  20.919633865356445
-
-Loss for rho =  35 :  38.054019927978516
+---
+Note: The values provided in this README.md are placeholders. Make sure to update the values and descriptions based on your actual results.
 
 Epochs: 50
 ---
