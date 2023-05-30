@@ -381,18 +381,22 @@ plot_predictions(targets_35, predictions_35, f'ESN for rho={rho_35}')
 
 NN:
 Loss for rho =  17 :  51.017696380615234
+
 Loss for rho =  35 :  119.07109832763672
 
 LSTM:
 Loss for rho =  17 :  34.123451232910156
+
 Loss for rho =  35 :  55.88348388671875
 
 RNN:
 Loss for rho =  17 :  43.22047805786133
+
 Loss for rho =  35 :  55.39307403564453
 
 ESN:
 Loss for rho =  17 :  20.919633865356445
+
 Loss for rho =  35 :  38.054019927978516
 
 Epochs: 50
