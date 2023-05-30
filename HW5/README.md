@@ -388,9 +388,6 @@ The table below shows the error rates (loss) obtained for each neural network ar
 | RNN            | 43.22  | 55.39  |
 | ESN            | 20.92  | 38.05  |
 
----
-Note: The values provided in this README.md are placeholders. Make sure to update the values and descriptions based on your actual results.
-
 Epochs: 50
 ---
 
