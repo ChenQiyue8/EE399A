@@ -34,7 +34,7 @@ The SHRED model is a hybrid network architecture that combines the strengths of 
 ## Algorithm Implementation and Development
 
 We first randomly select 3 sensor locations and set the trajectory length (lags) to 52, corresponding to one year of measurements.
-```
+``` python
 import numpy as np
 from processdata import load_data
 from processdata import TimeSeriesDataset
@@ -52,7 +52,7 @@ sensor_locations = np.random.choice(m, size=num_sensors, replace=False)
 ```
 
 We now select indices to divide the data into training, validation, and test sets.
-```
+``` python
 train_indices = np.random.choice(n - lags, size=1000, replace=False)
 mask = np.ones(n - lags)
 mask[train_indices] = 0
@@ -62,7 +62,7 @@ test_indices = valid_test_indices[1::2]
 ```
 
 sklearn's MinMaxScaler is used to preprocess the data for training and we generate input/output pairs for the training, validation, and test sets. 
-```
+``` python
 sc = MinMaxScaler()
 sc = sc.fit(load_X[train_indices])
 transformed_X = sc.transform(load_X)
@@ -90,20 +90,20 @@ test_dataset = TimeSeriesDataset(test_data_in, test_data_out)
 ```
 
 We train the model using the training and validation datasets.
-```
+```python
 shred = models.SHRED(num_sensors, m, hidden_size=64, hidden_layers=2, l1=350, l2=400, dropout=0.1).to(device)
 validation_errors = models.fit(shred, train_dataset, valid_dataset, batch_size=64, num_epochs=1000, lr=1e-3, verbose=True, patience=5)
 ```
 
 Finally, we generate reconstructions from the test set and print mean square error compared to the ground truth.
-```
+``` python
 test_recons = sc.inverse_transform(shred(test_dataset.X).detach().cpu().numpy())
 test_ground_truth = sc.inverse_transform(test_dataset.Y.detach().cpu().numpy())
 print(np.linalg.norm(test_recons - test_ground_truth) / np.linalg.norm(test_ground_truth))
 ```
 
 We train models for various values of time lag and evaluate the performace as a function of time lag.
-```
+``` python
 # Set the desired time lag values
 lag_values = [26, 52, 78, 104, 130]
 
@@ -156,7 +156,7 @@ plt.show()
 ```
 
 We train models for different values of noise variance and evaluate the performace as a function of noise level.
-```
+```python
 # Set the desired noise variance levels
 noise_variances = [0.01, 0.05, 0.1, 0.2, 0.5]
 
@@ -217,7 +217,7 @@ plt.show()
 ```
 
 We train models for different numbers of sensors (1-5) and evaluate the performace as a function of the number of sensors.
-```
+```python
 # Set the desired number of sensors
 num_sensors_values = [1, 2, 3, 4, 5]
 
