@@ -1,4 +1,4 @@
-# Analyzing the Performance of a SHRED Model on Sea-Surface Temperature Data with Respect to Time Lag, Noise, and Number of Sensors
+# Evaluation of SHRED Model Performance on Sea-Surface Temperature Data Considering Time Lag, Noise, and Sensor Count
 
 **Author**:
 
@@ -6,28 +6,28 @@ Qiyue Chen
 
 **Abstract**:
 
-In this report, we train a SHallow REcurrent Decoder (SHRED) model on NOAA's sea-surface temperature data and assess its performance. Key variables in this analysis include time lag, the level of Gaussian noise, and the number of sensors. By manipulating these parameters, we aim to understand their impact on the model's predictive accuracy, providing insights into the robustness and scalability of the SHRED model under various data conditions.
+This report focuses on training a SHallow REcurrent Decoder (SHRED) model using NOAA's sea-surface temperature data and evaluating its performance. Our analysis emphasizes key factors such as time lag, Gaussian noise levels, and sensor count. Through parameter manipulation, we aim to gain a comprehensive understanding of how these variables affect the model's predictive accuracy. By uncovering insights into the SHRED model's robustness and scalability across diverse data conditions, we aim to provide valuable guidance for its application.
 
 ---
 
 ## Introduction
 
-This assignment dives into the exploration of the SHallow REcurrent Decoder (SHRED) model's performance in reconstructing high-dimensional spatio-temporal fields. Our study specifically focuses on the model's ability to predict sea-surface temperatures, utilizing the NOAA Optimum Interpolation SST V2 dataset.
+This assignment delves into the examination of the SHallow REcurrent Decoder (SHRED) model's performance in reconstructing high-dimensional spatio-temporal fields. Our study specifically focuses on the model's proficiency in predicting sea-surface temperatures, utilizing the NOAA Optimum Interpolation SST V2 dataset.
 
-SHRED, which merges an LSTM network with a shallow decoder network (SDN), will be trained to make predictions from a trajectory of sensor measurements over different time lags. We aim to evaluate how the model performs under varying conditions such as changes in time lag, addition of Gaussian noise to the data, and variations in the number of sensors used.
+To accomplish this, SHRED, which combines an LSTM network with a shallow decoder network (SDN), will undergo training to generate predictions based on a trajectory of sensor measurements across different time lags. Our objective is to assess the model's performance under diverse conditions, including variations in time lag, the introduction of Gaussian noise to the data, and fluctuations in the number of sensors employed.
 
 ---
 
 ## Theoretical Background
 
 ### Long Short-Term Memory (LSTM):
-LSTM networks, part of the recurrent neural network (RNN) family, are designed to process sequential data while overcoming the vanishing gradient problem, a common issue in RNNs. Unlike standard RNNs, LSTMs incorporate gating mechanisms in their architecture, which enable them to selectively remember or forget information over long sequences. This ability to learn long-term dependencies in the data makes them powerful tools for modeling complex sequences and temporal dynamics.
+LSTM networks, belonging to the family of recurrent neural networks (RNNs), are specifically designed to process sequential data while addressing the issue of the vanishing gradient, a common challenge in RNNs. Unlike standard RNNs, LSTMs incorporate gating mechanisms within their architecture, allowing them to selectively retain or forget information over long sequences. This capability to capture long-term dependencies in the data makes LSTMs powerful for modeling complex sequences and temporal dynamics.
 
 ### Shallow Decoder Networks (SDNs):
-SDNs are a type of feedforward neural network designed to handle high-dimensional output. Contrasting with deeper networks, SDNs have fewer layers which can make them more interpretable and easier to optimize. Despite their simplicity, SDNs can learn complex mappings from their inputs to high-dimensional outputs, especially when paired with other types of networks that process the input data.
+SDNs are a type of feedforward neural network designed to handle high-dimensional output. In contrast to deeper networks, SDNs have fewer layers, which can enhance interpretability and facilitate optimization. Despite their simplicity, SDNs can learn intricate mappings from input data to high-dimensional outputs, especially when combined with other network types that process the input data.
 
 ### SHallow REcurrent Decoder (SHRED):
-The SHRED model is a hybrid network architecture that combines the strengths of LSTM networks and SDNs. This architecture enables SHRED to handle high-dimensional spatio-temporal fields. The model first uses an LSTM network to capture temporal dependencies in the data. The output of the LSTM network is then processed by an SDN to reconstruct the spatio-temporal field. This combination enables the model to infer high-dimensional fields from sequences of measurements over time, making it particularly useful for tasks where the goal is to reconstruct a field from sensor data.
+The SHRED model is a hybrid network architecture that combines the strengths of LSTM networks and SDNs. This unique architecture equips SHRED to effectively handle high-dimensional spatio-temporal fields. Initially, the model employs an LSTM network to capture temporal dependencies in the data. Subsequently, the output of the LSTM network undergoes processing by an SDN to reconstruct the spatio-temporal field. This combination enables the model to infer high-dimensional fields from sequences of measurements over time, making it particularly valuable for tasks involving the reconstruction of a field from sensor data.
 
 ---
 
