@@ -104,6 +104,8 @@ def generate_data(rho, seed=123):
 
 ### Functions for creating and training models
 
+
+
 #### Feed Forward Neural Network (FFNN)
 ```
 def build_ffnn(input_shape):
@@ -387,7 +389,6 @@ The table below shows the error rates (loss) obtained for each neural network ar
 | LSTM           | 34.12  | 55.88  |
 | RNN            | 43.22  | 55.39  |
 | ESN            | 20.92  | 38.05  |
-
 Epochs: 50
 ---
 
