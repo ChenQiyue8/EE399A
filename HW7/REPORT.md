@@ -12,3 +12,5 @@ The epsilon parameter stands for the exploration factor, demonstrating the agent
 A lower epsilon value, such as 0.05 in this scenario, means that the agent leans more towards exploiting known information rather than exploring unknown territories. This change resulted in better performance because the agent relied more heavily on the knowledge it had already gained, making decisions based on proven strategies rather than taking risks on unknown routes. As a result, it spent more time reinforcing successful behaviors, leading to a higher success rate.
 
 The gamma value reflects the balance between immediate and future rewards, which becomes relevant when the environment doesn't promptly respond to the agent's actions. Sometimes, a series of actions is required before determining the effectiveness of a particular approach. With the updated parameters, my snake demonstrated a strikingly improved performance, securing victories in 33 out of 34 games.
+
+![Alt text] HW7/Screenshot 2023-06-02 at 11.41.22 AM.png
