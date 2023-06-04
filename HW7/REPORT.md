@@ -3,7 +3,7 @@ In my experimental endeavors, I opted for a unique combination of hyperparameter
 n_episodes = 1000000
 epsilon = 0.05
 gamma = 0.875
-rewards = [-10, -1, 2, 1000000]
+rewards = [-10, -1, 2, 1000000] # Death, ineffcient move, apple, win (occupy all blocks)
 
 This setup contrasts with the original settings where epsilon was 0.3 and gamma 0.9, leading to a winning ratio of around 1 in 20 games. The modified parameters turned out to be significantly more effective.
 
@@ -13,6 +13,10 @@ A lower epsilon value, such as 0.05 in this scenario, means that the agent leans
 
 The gamma value reflects the balance between immediate and future rewards, which becomes relevant when the environment doesn't promptly respond to the agent's actions. Sometimes, a series of actions is required before determining the effectiveness of a particular approach. With the updated parameters, my snake demonstrated a strikingly improved performance, securing victories in 33 out of 34 games.
 
+I also found that when death reward is very negative, or when ineeficient move reward is not low enough, the snake tend to circle around and keep doing infinite loops. That is due to poor reward function causes the agent to be to scared of death or not being penalized by ineeficient moves enough, causing it to circle around. 
+
 <p>
   <img src='https://github.com/qchen4/EE399A/blob/3307d39df3328e15102a46663d7c554d176725f4/HW7/Screenshot%202023-06-02%20at%2011.41.22%20AM.png'>
 </p>
+
+The image is the finial result of my hyperparameters, which leads me to win almost every game. 
