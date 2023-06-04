@@ -1,8 +1,11 @@
 In my experimental endeavors, I opted for a unique combination of hyperparameters:
 
-n_episodes = 1000000 \n
-epsilon = 0.05 \n
-gamma = 0.875 \n
+n_episodes = 1000000 
+
+epsilon = 0.05 
+
+gamma = 0.875 
+
 rewards = [-10, -1, 2, 1000000] # Death, ineffcient move, apple, win (occupy all blocks)
 
 This setup contrasts with the original settings where epsilon was 0.3 and gamma 0.9, leading to a winning ratio of around 1 in 20 games. The modified parameters turned out to be significantly more effective.
