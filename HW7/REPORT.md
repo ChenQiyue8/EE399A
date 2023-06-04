@@ -13,4 +13,6 @@ A lower epsilon value, such as 0.05 in this scenario, means that the agent leans
 
 The gamma value reflects the balance between immediate and future rewards, which becomes relevant when the environment doesn't promptly respond to the agent's actions. Sometimes, a series of actions is required before determining the effectiveness of a particular approach. With the updated parameters, my snake demonstrated a strikingly improved performance, securing victories in 33 out of 34 games.
 
-![Alt text] (HW7/Screenshot 2023-06-02 at 11.41.22 AM.png)
+<p>
+  <img src='https://github.com/qchen4/EE399A/blob/3307d39df3328e15102a46663d7c554d176725f4/HW7/Screenshot%202023-06-02%20at%2011.41.22%20AM.png'>
+</p>
