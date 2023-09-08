@@ -1,6 +1,6 @@
-# EE 399 - Introduction to Machine Learning Homework Reports
+# Project Portfolio: Data analysis and Machine Learning Techniques
 
-Welcome to the repository for homework assignments and corresponding reports from the course EE 399: Machine Learning for Science and Engineering at the University of Washington, Spring 2023, taught by Professor Dr. Nathan Kutz.
+Welcome to my repository for homework assignments and corresponding reports from the course EE 399: Machine Learning for Science and Engineering at the University of Washington, Spring 2023, taught by Professor Dr. Nathan Kutz.
 
 This repository serves as a comprehensive resource for all the assignments completed during the course. Each assignment covers a wide range of topics in machine learning, including data analysis tools, data classification, neural networks, and reinforcement learning. Here's a breakdown of the contents:
 
