@@ -1,12 +1,10 @@
 # Table of Contents
-- [Analyzing Face Image Relationships through Correlation and Dimensionality Reduction Techniques on the Yalefaces Dataset](#analyzing-face-image-relationships-through-correlation-and-dimensionality-reduction-techniques-on-the-yalefaces-dataset)
-  - [Introduction](#introduction)
-  - [Theoretical Background](#theoretical-background)
-    - [Correlation](#correlation)
-    - [Eigenvectors and Eigenvalues](#eigenvectors-and-eigenvalues)
-    - [Singular Value Decomposition (SVD)](#singular-value-decomposition-svd)
-  - [Algorithm Implementation and Development](#algorithm-implementation-and-development)
+- [Introduction](#introduction)
+- [Theoretical Background](#theoretical-background)
+- [Algorithm Implementation](#algorithm-implementation-and-development)
+- [Computational Results](#computational-results)
 - [Summary and Conclusions](#summary-and-conclusions)
+
 
 # Analyzing Face Image Relationships through Correlation and Dimensionality Reduction Techniques on the Yalefaces Dataset
 **Author**:
