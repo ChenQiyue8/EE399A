@@ -4,12 +4,27 @@
 Qiyue Chen 
 
 # Table of Contents
-- [HW1: Non-Linear Regression and Model Selection](#hw1-non-linear-regression-and-model-selection)
+- [Analyzing Face Image Relationships through Correlation and Dimensionality Reduction Techniques on the Yalefaces Dataset](#analyzing-face-image-relationships-through-correlation-and-dimensionality-reduction-techniques-on-the-yalefaces-dataset)
   - [Introduction](#introduction)
   - [Theoretical Background](#theoretical-background)
+    - [Correlation](#correlation)
+    - [Eigenvectors and Eigenvalues](#eigenvectors-and-eigenvalues)
+    - [Singular Value Decomposition (SVD)](#singular-value-decomposition-svd)
   - [Algorithm Implementation and Development](#algorithm-implementation-and-development)
+    - [Problem (a): Computing and plotting the correlation matrix between the first 100 faces](#problem-a-computing-and-plotting-the-correlation-matrix-between-the-first-100-faces)
+    - [Problem (b): Plotting most and least correlated faces](#problem-b-plotting-most-and-least-correlated-faces)
+    - [Problem (c): Computing and plotting the correlation matrix for specified images](#problem-c-computing-and-plotting-the-correlation-matrix-for-specified-images)
+    - [Problem (d): Creating the matrix `Y = XX^T` and finding the first 6 eigenvectors with the largest magnitude eigenvalues](#problem-d-creating-the-matrix-y--xxt-and-finding-the-first-6-eigenvectors-with-the-largest-magnitude-eigenvalues)
+    - [Problem (e): Singular value decomposition of X and finding the first 6 principal component directions](#problem-e-singular-value-decomposition-of-x-and-finding-the-first-6-principal-component-directions)
+    - [Problem (f): Computing the norm of the difference of absolute values of the first eigenvector `v_1` and the first SVD mode `u_1`](#problem-f-computing-the-norm-of-the-difference-of-absolute-values-of-the-first-eigenvector-v_1-and-the-first-svd-mode-u_1)
+    - [Problem (g): Compute the percentage of variance captured by each of the first 6 SVD modes and plotting the first 6 SVD modes](#problem-g-compute-the-percentage-of-variance-captured-by-each-of-the-first-6-svd-modes-and-plotting-the-first-6-svd-modes)
   - [Computational Results](#computational-results)
-  - [Summary and Conclusions](#summary-and-conclusions)
+    - [Problem (a): Computing and plotting the correlation matrix between the first 100 faces](#problem-a-computing-and-plotting-the-correlation-matrix-between-the-first-100-faces)
+    - [Problem (b): Plotting most and least correlated faces](#problem-b-plotting-most-and-least-correlated-faces)
+    - [Problem (c): Computing and plotting the correlation matrix for specified images](#problem-c-computing-and-plotting-the-correlation-matrix-for-specified-images)
+    - [Problem (f): Computing the norm of the difference of absolute values of the first eigenvector `v_1` and the first SVD mode `u_1`](#problem-f-computing-the-norm-of-the-difference-of-absolute-values-of-the-first-eigenvector-v_1-and-the-first-svd-mode-u_1)
+    - [Problem (g): Compute the percentage of variance captured by each of the first 6 SVD modes and plotting the first 6 SVD modes](#problem-g-compute-the-percentage-of-variance-captured-by-each-of-the-first-6-svd-modes-and-plotting-the-first-6-svd-modes)
+- [Summary and Conclusions](#summary-and-conclusions)
 
 **Abstract**:
 
