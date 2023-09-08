@@ -1,4 +1,28 @@
- # Homework 3: Singular Value Decomposition (SVD), Support Vector Machine (SVM) and Decision Trees  - Qiyue Chen
+
+1. [Abstract](#abstract)
+2. [Introduction and Overview](#introduction-and-overview)
+3. [Theoretical Background](#theoretical-background)
+4. [Algorithm Implementation and Development](#algorithm-implementation-and-development)
+   - [Task 1](#task-1)
+     - [Part (a)](#part-a)
+     - [Part (b)](#part-b)
+     - [Part (c)](#part-c)
+     - [Part (d)](#part-d)
+   - [Task 2 Classification Algorithms](#task-2-classification-algorithms)
+     - [LDA](#lda)
+       - [Part (a)](#lda-part-a)
+       - [Part (b)](#lda-part-b)
+       - [Part (c, d)](#lda-part-c-d)
+     - [SVM](#svm)
+     - [Decision Trees](#decision-trees)
+5. [Results](#results)
+   - [SVD Analysis](#svd-analysis)
+   - [Classification Results](#classification-results)
+6. [Conclusion](#conclusion)
+7. [Acknowledgments](#acknowledgments)
+8. [References](#references)
+
+# Homework 3: Singular Value Decomposition (SVD), Support Vector Machine (SVM) and Decision Trees  - Qiyue Chen
 
 ## Abstract:
 
