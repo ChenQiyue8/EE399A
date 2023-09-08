@@ -1,5 +1,5 @@
-# EE 399 Machine Learning HW Reports
-This repository contains the homework and their corresponding reports for the course EE 399 (Machine Learning for Science and Engineering) at the University of Washington.  
+# EE 399 Introduction to Machine Learning Homework Reports
+This repository contains the homework and their corresponding reports for the course EE 399 (Machine Learning for Science and Engineering) at the University of Washington. The homework covers topics including data analysis tools (PCA, LDA, etc), data classification, neural networks and reinforcement learning.
 
 Course Date: Spring 2023  
 
