@@ -3,6 +3,14 @@
 
 Qiyue Chen 
 
+# Table of Contents
+- [HW1: Non-Linear Regression and Model Selection](#hw1-non-linear-regression-and-model-selection)
+  - [Introduction](#introduction)
+  - [Theoretical Background](#theoretical-background)
+  - [Algorithm Implementation and Development](#algorithm-implementation-and-development)
+  - [Computational Results](#computational-results)
+  - [Summary and Conclusions](#summary-and-conclusions)
+
 **Abstract**:
 
 By utilizing techniques such as correlation matrices, eigenvectors, and Singular Value Decomposition (SVD), this study explores the connections among 2414 grayscale face images. The report analyzes image correlations and distinguishes highly correlated and uncorrelated pairs while computing principal component directions. The study compares eigenvectors and SVD modes and evaluates the variance captured by SVD modes. It also provides valuable insights into image relationships under various lighting conditions, showcasing the effectiveness of these methods in image analysis.
