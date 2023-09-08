@@ -17,6 +17,6 @@ This repository serves as a comprehensive resource for all the assignments compl
 5. [**HW5: Prediction of Lorenz System Behavior using Neural Networks**](./HW5/README.md)
    
 6. [**HW6: Evaluation of SHRED Model Performance on Sea-Surface Temperature Data Considering Time Lag, Noise, and Sensor Count**](./HW6/README.md)
-7. [**HW7: Rereinforcement learning -- reward function parameter effects on agent behavior**](./HW7/REPORT.md)
+7. [**HW7: Rereinforcement Learning -- Reward Function Parameter Effects on Agent Behavior**](./HW7/REPORT.md)
 
 Feel free to explore each assignment's README for detailed explanations, code, and insights into the machine learning concepts covered in this course. If you have any questions or suggestions, please don't hesitate to reach out.
