@@ -10,7 +10,6 @@
 
 # Analyzing Face Image Relationships through Correlation and Dimensionality Reduction Techniques on the Yalefaces Dataset
 **Author**:
-
 Qiyue Chen 
 
 
