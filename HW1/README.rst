@@ -1,4 +1,4 @@
-.. contents:: Table of contents
+.. contents::
 
 HW1: Non-Linear Regression and Model Selection 
 =========================================
