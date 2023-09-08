@@ -1,9 +1,7 @@
 # EE 399 Introduction to Machine Learning Homework Reports
-This repository contains the homework and their corresponding reports for the course EE 399 (Machine Learning for Science and Engineering) at the University of Washington. The homework covers topics including data analysis tools (PCA, LDA, etc), data classification, neural networks and reinforcement learning.
+Welcome to the repository for homework assignments and corresponding reports from the course EE 399: Machine Learning for Science and Engineering at the University of Washington, Spring 2023, taught by Professor Dr. Nathan Kutz.
 
-Course Date: Spring 2023  
-
-Professor: Dr. Nathan Kutz  
+This repository serves as a comprehensive resource for all the assignments completed during the course. Each assignment covers a wide range of topics in machine learning, including data analysis tools, data classification, neural networks, and reinforcement learning. Here's a breakdown of the contents:
 
 ## Table of Contents
 - [HW1: Non-Linear Regression and Model Selection](./HW1/README.rst)
