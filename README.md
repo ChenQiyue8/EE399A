@@ -23,7 +23,7 @@ This repository serves as a comprehensive resource for all the assignments compl
    
 6. [**HW6: Evaluation of SHRED Model Performance on Sea-Surface Temperature Data Considering Time Lag, Noise, and Sensor Count**](./HW6/README.md)
     - Evaluate the performance of the SHRED model on sea-surface temperature data, taking into account time lag, noise, and sensor count.
-7. Rereinforcement learning
-   _ Explored how tunning the reward function could affect agent behavior.
+7. [**Rereinforcement learning**]
+   - Explored how tunning the reward function could affect agent behavior.
 
 Feel free to explore each assignment's README for detailed explanations, code, and insights into the machine learning concepts covered in this course. If you have any questions or suggestions, please don't hesitate to reach out.
