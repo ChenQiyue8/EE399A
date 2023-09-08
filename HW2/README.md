@@ -17,7 +17,6 @@ Qiyue Chen
 
 By utilizing techniques such as correlation matrices, eigenvectors, and Singular Value Decomposition (SVD), this study explores the connections among 2414 grayscale face images. The report analyzes image correlations and distinguishes highly correlated and uncorrelated pairs while computing principal component directions. The study compares eigenvectors and SVD modes and evaluates the variance captured by SVD modes. It also provides valuable insights into image relationships under various lighting conditions, showcasing the effectiveness of these methods in image analysis.
 
-.. contents:: Table of contents
 
 ---
 
