@@ -5,11 +5,10 @@ Course Date: Spring 2023
 
 Professor: Dr. Nathan Kutz  
 
-
 ## Table of Contents
-- [Homework 1](./HW1/README.rst)
-- [Homework 2](./HW2/README.md)
-- [Homework 3](./HW3/README.md)
-- [Homework 4](./HW4/README.md)
-- [Homework 5](./HW5/README.md)
-- [Homework 6](./HW6/README.md)
+- [HW1: Non-Linear Regression and Model Selection](./HW1/README.rst)
+- [HW2: Analyzing Face Image Relationships through Correlation and Dimensionality Reduction Techniques on the Yalefaces Dataset](./HW2/README.md)
+- [HW3: Singular Value Decomposition (SVD), Support Vector Machine (SVM), and Decision Trees - Qiyue Chen](./HW3/README.md)
+- [HW4: Analysis of Feedforward Neural Network and Comparison with Other Classifiers on Dataset and MNIST](./HW4/README.md)
+- [HW5: Prediction of Lorenz System Behavior using Neural Networks](./HW5/README.md)
+- [HW6: Evaluation of SHRED Model Performance on Sea-Surface Temperature Data Considering Time Lag, Noise, and Sensor Count](./HW6/README.md)
